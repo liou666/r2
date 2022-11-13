@@ -17,7 +17,7 @@ const IndexPage = () => {
   return (
     <div>
       <div
-        i-carbon-campsite text-4xl inline-block
+        i-carbon-cookie text-4xl inline-block
         hover:op75
       />
       <p>
