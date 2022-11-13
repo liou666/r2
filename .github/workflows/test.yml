@@ -1,4 +1,4 @@
-name: GitHub Actions Test
+name: Test
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
 jobs:
  build:
     runs-on: ${{ matrix.os }}
@@ -20,7 +20,27 @@ jobs:
         node_version: [14.x, 16.x]
         os: [ubuntu-latest, windows-latest]
       fail-fast: false
+
     steps:
-    - name: Print a greeting
-      run: |
-        echo hello.
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: pnpm
+
+      - name: Install
+        run: pnpm i
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Lint
+        run: pnpm run lint
+
+
