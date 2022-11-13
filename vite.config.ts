@@ -34,9 +34,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-  build:{
-    rollupOptions:{
-      external:['ahooks']
-    }
-  }
+  build: {
+    rollupOptions: {
+      external: ['ahooks'],
+    },
+  },
 })

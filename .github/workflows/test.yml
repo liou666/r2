@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
- build:
+  build:
     runs-on: ${{ matrix.os }}
 
     timeout-minutes: 10
@@ -35,13 +35,12 @@ jobs:
       - name: Install
         run: pnpm i
 
-      - name: Build
-        run: pnpm run build
+      - name: Lint
+        run: pnpm run lint
 
       - name: Test
         run: pnpm run test
 
-      - name: Lint
-        run: pnpm run lint
-
+      - name: Build
+        run: pnpm run build
 
