@@ -6,7 +6,7 @@ const HiPage = () => {
     <div>
       <div i-carbon-pedestrian text-4xl inline-block />
       <p>
-        Hi,
+        hi, nice to meet you
         {' '}
         { params.name }
       </p>
