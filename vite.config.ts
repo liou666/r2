@@ -28,15 +28,14 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src'),
     },
-    extensions: ['.tsx', '.json', 'js', '.ts'],
   },
   test: {
     globals: true,
     environment: 'jsdom',
   },
-  build: {
-    rollupOptions: {
-      external: ['ahooks'],
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: ['ahooks'],
+  //   },
+  // },
 })
