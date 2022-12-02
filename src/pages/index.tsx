@@ -2,8 +2,8 @@ import type { KeyboardEvent } from 'react'
 
 const IndexPage = () => {
   const [name, setName] = useState('')
+  const { t } = useTranslation(['common', 'page'])
   const navigate = useNavigate()
-
   const handleKeyDownEnter = useMemoizedFn((e: KeyboardEvent) => {
     if (e && e.code === 'Enter' && name)
       navigate(`/hi/${encodeURIComponent(name)}`)
@@ -13,7 +13,6 @@ const IndexPage = () => {
     if (name)
       navigate(`/hi/${encodeURIComponent(name)}`)
   })
-
   return (
     <div>
       <div
@@ -21,12 +20,12 @@ const IndexPage = () => {
         hover:op75
       />
       <p>
-        <em text-sm op75>Opinionated Vite Starter Template</em>
+        <em text-sm op75>{ t('page:home.hi')}</em>
       </p>
       <div py-4 />
       <input
         id='input'
-        placeholder="What's your name?"
+        placeholder={t('common:placeholder.name')!}
         type='text'
         autoComplete='false'
         p='x-4 y-2'
@@ -44,7 +43,7 @@ const IndexPage = () => {
           onClick={handleClickEnter}
           disabled={!name}
         >
-          Go
+          {t('common:button.go')}
         </button>
       </div>
     </div>

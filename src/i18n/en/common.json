@@ -1,0 +1,9 @@
+{
+  "placeholder": {
+    "name": "Whats your name?"
+  },
+  "button": {
+    "go": "Go",
+    "back": "Back"
+  }
+}

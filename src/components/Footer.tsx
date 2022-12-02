@@ -1,5 +1,8 @@
 export default function Footer() {
   const [, toggle] = useDark()
+  const { i18n } = useTranslation()
+  const [currentLanguage] = i18n.language.split('-')
+
   return (
     <nav
       inline-flex gap-2
@@ -17,6 +20,13 @@ export default function Footer() {
         icon-btn
         dark:i-carbon-moon i-carbon:sun
         onClick={() => toggle()}
+      />
+      <i
+        i-carbon-language
+        icon-btn
+        onClick={() => {
+          i18n.changeLanguage(currentLanguage === 'en' ? 'zh' : 'en')
+        }}
       />
     </nav>
   )

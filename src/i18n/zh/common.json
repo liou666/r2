@@ -1,0 +1,9 @@
+{
+  "placeholder": {
+    "name": "你的名字？"
+  },
+  "button": {
+    "go": "开始",
+    "back": "返回"
+  }
+}

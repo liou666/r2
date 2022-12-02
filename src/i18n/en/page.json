@@ -1,0 +1,9 @@
+{
+  "hi": {
+    "hi": "hi, nice to meet you",
+    "detail": "Dynamic route!"
+  },
+  "home": {
+    "hi": "Opinionated Vite Starter Template"
+  }
+}
