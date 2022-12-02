@@ -1,10 +1,10 @@
-# React Starter 
+# React Starter
 
-For easily automatic deploy, the code was migrated from [here](https://github.com/liou666/template/tree/react). 
+For easily automatic deploy, the code was migrated from [here](https://github.com/liou666/template/tree/react).
 
 This is a template preset base React, inspired by [Vitesse Lite](https://github.com/antfu/vitesse-lite), thinks for the author.
 
-[Online Preview Address](https://hellor2.netlify.app/) 
+[Online Preview Address](https://hellor2.netlify.app/)
 
 ## 🎉 Features
 
@@ -14,7 +14,7 @@ This is a template preset base React, inspired by [Vitesse Lite](https://github.
 - 😃 [Use icons from any icon sets with classes](https://github.com/unocss/unocss/tree/main/packages/preset-icons)
 - 🦾 [ESlint](https://eslint.org/) + [Vitest](https://vitest.dev/)
 - ☁️ [Netlify](https://www.netlify.com/)
-- 📕 [React-I18next](https://react.i18next.com/) (~~todo~~)
+- 📕 [React-I18next](https://react.i18next.com/)
 
 ### 🚀 SetUp
 
@@ -23,7 +23,4 @@ npx degit liou666/r2 projectName
 cd projectName
 pnpm install
 pnpm dev
-``` 
-
-
-
+```
