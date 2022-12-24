@@ -1,8 +1,9 @@
+import { useRecoilState } from 'recoil'
+import { i18nLocaleState } from '@/store'
 export default function Footer() {
   const [, toggle] = useDark()
   const { i18n } = useTranslation()
-  const [currentLanguage] = i18n.language.split('-')
-
+  const [i18nLocale, setI18nLocale] = useRecoilState(i18nLocaleState)
   return (
     <nav
       inline-flex gap-2
@@ -25,7 +26,16 @@ export default function Footer() {
         i-carbon-language
         icon-btn
         onClick={() => {
-          i18n.changeLanguage(currentLanguage === 'en' ? 'zh' : 'en')
+          if (i18nLocale === 'en-US') {
+            // setLocale('zh-CN')
+            setI18nLocale('zh-CN')
+          }
+          else {
+            // setLocale('en-US')
+            setI18nLocale('en-US')
+          }
+
+          i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')
         }}
       />
     </nav>

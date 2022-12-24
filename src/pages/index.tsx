@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react'
-
+import { Button, DatePicker, Table } from 'antd'
 const IndexPage = () => {
   const [name, setName] = useState('')
   const { t } = useTranslation(['common', 'page'])
@@ -15,6 +15,9 @@ const IndexPage = () => {
   })
   return (
     <div>
+      <Button type='primary' className='m-1'>lang</Button>
+      <DatePicker />
+      <Table />
       <div
         i-carbon-cookie text-4xl inline-block
         hover:op75

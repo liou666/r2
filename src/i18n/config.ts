@@ -1,14 +1,15 @@
-import pageZH from './zh/page.json'
-import commonZH from './zh/common.json'
-import pageEN from './en/page.json'
-import commonEN from './en/common.json'
+import pageZH from './zh-CN/page.json'
+import commonZH from './zh-CN/common.json'
+
+import pageEN from './en-US/page.json'
+import commonEN from './en-US/common.json'
 
 export const resources = {
-  en: {
+  'en-US': {
     page: pageEN,
     common: commonEN,
   },
-  zh: {
+  'zh-CN': {
     page: pageZH,
     common: commonZH,
   },
