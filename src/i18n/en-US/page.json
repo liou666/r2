@@ -4,6 +4,7 @@
     "detail": "Dynamic route!"
   },
   "home": {
-    "hi": "Opinionated Vite Starter Template"
+    "hi": "Opinionated Vite Starter Template",
+    "hed": "www {{name}}"
   }
 }

@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
-import '@/styles/main.css'
+// import '@/styles/main.css'
+import '@/styles/tailwind.css'
 import 'antd/dist/reset.css'
 import '@/i18n'
 

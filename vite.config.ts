@@ -5,11 +5,10 @@ import { defineConfig } from 'vite'
 import React from '@vitejs/plugin-react'
 import AutoImport from 'unplugin-auto-import/vite'
 import Pages from 'vite-plugin-pages'
-import Unocss from 'unocss/vite'
 
 export default defineConfig({
   plugins: [
-    Unocss({}),
+    // Unocss({}),
     React(),
     Pages(),
     AutoImport({

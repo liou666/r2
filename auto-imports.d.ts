@@ -16,7 +16,6 @@ declare global {
   const useAsyncEffect: typeof import('ahooks')['useAsyncEffect']
   const useBoolean: typeof import('ahooks')['useBoolean']
   const useCallback: typeof import('react')['useCallback']
-  const useChangeLang: typeof import('./src/hooks/useChangeLang')['default']
   const useClickAway: typeof import('ahooks')['useClickAway']
   const useContext: typeof import('react')['useContext']
   const useControllableValue: typeof import('ahooks')['useControllableValue']

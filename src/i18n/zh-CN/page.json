@@ -4,6 +4,7 @@
     "detail": "动态路由！"
   },
   "home": {
-    "hi": "React Vite 起始模板"
+    "hi": "React Vite 起始模板",
+    "hed": "www {{name}}"
   }
 }
