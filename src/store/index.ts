@@ -23,8 +23,8 @@ export const antdMessageState = selector({
   key: 'antdMessageState',
   get: ({ get }) => antdMessages[get(i18nLocaleState)] || antdMessages['zh-CN'],
 })
-console.log(routes)
+// console.log(routes)
 export const menus = atom({
   key: 'menus',
-  default: routes || [],
+  default: [],
 })

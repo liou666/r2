@@ -16,10 +16,10 @@ export default function App() {
   return (
     <ConfigProvider
       theme={{
-        algorithm: theme.compactAlgorithm,
+        // algorithm: theme.compactAlgorithm,
         // colorPrimary: '#1890ff',
         token: {
-          colorPrimary: '#e4d4e4',
+          // colorPrimary: '#e4d4e4',
         },
       }}
       locale={antdMessage}

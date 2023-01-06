@@ -2,19 +2,24 @@ import React, { useState } from 'react'
 import {
   DesktopOutlined,
   FileOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons'
+import cx from 'classnames'
 import type { MenuProps } from 'antd'
 import { Breadcrumb, Layout, Menu, theme } from 'antd'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 import { useRecoilValue } from 'recoil'
+import Header from './components/Header'
+import LeftSlide from './components/LeftSlide'
+import MainContent from './components/MainContent'
 import { menus } from '@/store'
-const { Header, Content, Footer, Sider } = Layout
+const { Content, Footer, Sider } = Layout
 type MenuItem = Required<MenuProps>['items'][number];
-
 function getItem(
   label: React.ReactNode,
   key: React.Key,
@@ -45,39 +50,36 @@ interface IProps{
 }
 const BaseLayout: React.FC<IProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
-  const m = useRecoilValue(menus)
-  console.log(m)
+  const headerHeight = 60
+  // const m = useRecoilValue(menus)
   return (
-    <Layout className='min-h-[100vh]'>
-      <Sider
-        collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}
-      >
-        123
-        <div id='universallayout-left' className={classnames({ narrow: collapsed, fiexd: true })}>
-          <div className='universallayout-left-sider'>
-            <div className='universallayout-left-logo'>
-              <Link to='/' className='logo-url'>
-                {collapsed ? 123 : <h3 className='logo-title'>AdminAntdReact</h3>}
-              </Link>
-            </div>
-            <div className='universallayout-left-menu'>
-              <Menu
-                theme='dark'
-                inlineCollapsed={collapsed}
-                items={items}
-                mode='inline'
-              />
-            </div>
-          </div>
+    <>
+      <Header
+        height={headerHeight}
+        className='bg'
+      />
+      <section className='flex'>
+        <div className={cx(collapsed ? 'w-[80px]' : 'w-[200px]', 'duration-300')} />
+        <div
+          style={{ height: `calc(100vh - ${headerHeight}px)` }}
+          className={cx(collapsed ? 'w-[80px]' : 'w-[200px]', 'fixed left-0 ')}
+        >
+          <LeftSlide
+            toggleIcon={<MenuFoldOutlined />}
+            onCollapse={() => { setCollapsed(!collapsed) }}
+            mode='inline'
+            theme='light'
+            collapsed={collapsed}
+            items={items}
+          />
         </div>
-      </Sider>
-      <Layout>
-        <Content className='mx-4'>
+        <main className='m-4 overflow-x-hidden overflow-y-auto flex-1 '>
+          <article>面包屑</article>
+          {/* <div className='h-[100vh] w-[100vw]' /> */}
           {children}
-        </Content>
-        <Footer className='text-center'>Ant Design ©2018 Created by Ant UED</Footer>
-      </Layout>
-    </Layout>
+        </main>
+      </section>
+    </>
   )
 }
 

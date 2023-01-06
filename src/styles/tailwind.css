@@ -43,3 +43,45 @@
     @apply border-solid border-current;
   }
 }
+
+@layer utilities {
+  .center{
+    @apply flex justify-center items-center;
+  }
+}
+
+
+:root {
+  /* --c-bg: #f3f7fa; */
+  --c-bg: #f3f7fa;;
+  --c-scrollbar: #eee;
+  --c-scrollbar-hover: #bbb;
+  /* transition: all .25s; */
+}
+
+body {
+  background-color: var(--c-bg);
+}
+html {
+  /* overflow: scroll; */
+}
+
+
+/* scrollbar */
+/* ::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+} */
+/* ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+  background: var(--c-bg);
+  border-radius: 10px;
+} */
+/* ::-webkit-scrollbar-thumb {
+  background: var(--c-scrollbar);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-scrollbar-hover);
+} */
