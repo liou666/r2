@@ -17,6 +17,7 @@ import { useRecoilValue } from 'recoil'
 import Header from './components/Header'
 import LeftSlide from './components/LeftSlide'
 import MainContent from './components/MainContent'
+import BreadcrumbC from './components/Breadcrumb'
 import { menus } from '@/store'
 const { Content, Footer, Sider } = Layout
 type MenuItem = Required<MenuProps>['items'][number];
@@ -56,13 +57,12 @@ const BaseLayout: React.FC<IProps> = ({ children }) => {
     <>
       <Header
         height={headerHeight}
-        className='bg'
       />
       <section className='flex'>
         <div className={cx(collapsed ? 'w-[80px]' : 'w-[200px]', 'duration-300')} />
         <div
           style={{ height: `calc(100vh - ${headerHeight}px)` }}
-          className={cx(collapsed ? 'w-[80px]' : 'w-[200px]', 'fixed left-0 ')}
+          className={cx(collapsed ? 'w-[80px]' : 'w-[200px]', 'fixed left-0 transition-all')}
         >
           <LeftSlide
             toggleIcon={<MenuFoldOutlined />}
@@ -73,10 +73,14 @@ const BaseLayout: React.FC<IProps> = ({ children }) => {
             items={items}
           />
         </div>
-        <main className='m-4 overflow-x-hidden overflow-y-auto flex-1 '>
-          <article>面包屑</article>
+        {/* border-bottom: 1px solid #e8e8e8; */}
+        <main className='overflow-x-hidden overflow-y-auto flex-1 '>
+          <article className='pl-5 bg-white/90 text-lg font-bold h-14 center-y border border-l-0 border-r-0 border-b border-gray-200 border-t-0'>面包屑</article>
+          {/* <BreadcrumbC /> */}
           {/* <div className='h-[100vh] w-[100vw]' /> */}
-          {children}
+          <div className='m-4 '>
+            {children}
+          </div>
         </main>
       </section>
     </>

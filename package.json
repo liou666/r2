@@ -21,6 +21,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "build:css": "tailwindcss -o src/tailwind.css --minify",
+    "dev:css": "tailwindcss -o src/tailwind.css --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",

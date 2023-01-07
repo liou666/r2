@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 function withOpacity(variableName) {
+  console.log(variableName)
   return ({ opacityValue }) => {
     if (opacityValue)
-      return `rgba(var(${variableName}), ${opacityValue})`
+      return `rgba(${variableName}, ${opacityValue})`
 
-    return `rgb(var(${variableName}))`
+    return `rgb(${variableName})`
   }
 }
 
