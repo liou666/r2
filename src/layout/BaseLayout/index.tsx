@@ -3,23 +3,19 @@ import {
   DesktopOutlined,
   FileOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons'
 import cx from 'classnames'
-import type { MenuProps } from 'antd'
-import { Breadcrumb, Layout, Menu, theme } from 'antd'
+import type { Menu, MenuItemProps, MenuProps } from 'antd'
 import { Link } from 'react-router-dom'
-import classnames from 'classnames'
-import { useRecoilValue } from 'recoil'
 import Header from './components/Header'
 import LeftSlide from './components/LeftSlide'
-import MainContent from './components/MainContent'
-import BreadcrumbC from './components/Breadcrumb'
-import { menus } from '@/store'
-const { Content, Footer, Sider } = Layout
+
+import baseRouter from '@/layout/BaseLayout/router'
+import type { IRouter } from '@/@types/router'
+
 type MenuItem = Required<MenuProps>['items'][number];
 function getItem(
   label: React.ReactNode,
@@ -34,24 +30,108 @@ function getItem(
     label,
   } as MenuItem
 }
+const createMenuItems = (
+  // t: (key: string) => string,
+  routes: IRouter[],
+  parentPath = '/',
+): MenuItem[] => {
+  const items: MenuItem[] = []
 
-const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-]
+  for (let index = 0; index < routes.length; index++) {
+    const item = routes[index]
+
+    // 验证权限
+    // if (!hasPermissionRoles(userRoles, item.meta?.roles))
+    //   continue
+
+    const icon = item.meta?.icon || undefined
+    const hidden = item.meta?.hidden || false
+    if (hidden === true) continue
+
+    // 设置路径
+    let path = item.path || ''
+    path = item.path.startsWith('/')
+      ? item.path
+      : `${parentPath.endsWith('/') ? parentPath : `${parentPath}/`}${item.path}`
+    const title = item.meta?.title || path || '--'
+
+    if (item.children) {
+      items.push({
+        key: path,
+        label: (
+          <>
+            {icon && (
+              <span className='anticon'>
+                {icon}
+                {/* <IconSvg name={icon} /> */}
+              </span>
+            )}
+            <span>{title}</span>
+          </>
+        ),
+        children: createMenuItems(item.children, path),
+      })
+    }
+    else {
+      items.push({
+        key: path,
+        label: (
+          <Link to={path}>
+            {icon && (
+              <span className='anticon'>
+                {/* <IconSvg name={icon} /> */}
+              </span>
+            )}
+            <span>{title}</span>
+          </Link>
+        ),
+      })
+    }
+  }
+
+  return items
+}
+console.log(createMenuItems(baseRouter))
+
+// const items: MenuItem[] = [
+//   getItem('Option 1', '1', <PieChartOutlined />),
+//   getItem('Option 2', '2', <DesktopOutlined />),
+//   getItem('User', 'sub1', <UserOutlined />, [
+//     getItem('Tom', '3'),
+//     getItem('Bill', '4'),
+//     getItem('Alex', '5'),
+//   ]),
+//   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+//   getItem('Files', '9', <FileOutlined />),
+// ]
 interface IProps{
   children?: React.ReactNode
 }
 const BaseLayout: React.FC<IProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
+  const { pathname } = useLocation()
+  console.log(pathname)
   const headerHeight = 60
+  const items = createMenuItems(baseRouter)
+  const defaultOpenKeys = [...pathname.matchAll(/\/\w+/g)]
+  console.log(defaultOpenKeys)
+  const defaultSelectedKeys = [pathname]
+  // const selectedKeys = useMemo(() => {
+  //   if (!baseRouter)
+  //     return []
+  //   return [baseRouter]
+  // }, [items])
+  // const parentPaths = useMemo(() => {
+  //   if (routeItem && routeItem.meta && routeItem.meta.parentPath)
+  //     return routeItem.meta.parentPath
+
+  //   return []
+  // }, [routeItem])
+  // const [openKeys, setOpenKeys] = useState<string[]>(mode === 'inline' ? parentPaths : [])
+  // useLayoutEffect(() => {
+  //   if (!collapsed && mode === 'inline') setOpenKeys(openKeys)
+  //   else setOpenKeys([defaultSelectedKeys])
+  // }, [collapsed, parentPaths])
   // const m = useRecoilValue(menus)
   return (
     <>
@@ -69,6 +149,9 @@ const BaseLayout: React.FC<IProps> = ({ children }) => {
             onCollapse={() => { setCollapsed(!collapsed) }}
             mode='inline'
             theme='light'
+            defaultSelectedKeys={[pathname]}
+            SelectedKeys={[pathname]}
+            defaultOpenKeys={[pathname]}
             collapsed={collapsed}
             items={items}
           />

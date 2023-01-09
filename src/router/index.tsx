@@ -56,24 +56,7 @@ export const createUseRoutes = (configRoutes: IRouter[], parentPath = '/'): Rout
 
 console.log(createUseRoutes(baseRouter))
 export const routes: RouteObject[] = [
-  {
-    path: '/',
-    element: <IndexScreen />,
-    children: [
-      {
-        path: '/project',
-        element: <Project />,
-      },
-      {
-        path: '/dashboard',
-        element: <Dashboard />,
-      },
-      {
-        path: '/hi/:id',
-        element: <Name />,
-      },
-    ],
-  },
+  ...createUseRoutes(baseRouter),
   {
     path: '*',
     element: <Page404Screen />,

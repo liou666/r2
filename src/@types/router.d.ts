@@ -43,25 +43,25 @@ export interface IRouteMeta {
    */
   breadcrumb?: BreadcrumbType[] | false;
   /**
-   * 左侧菜单选中，如果设置路径，侧栏将突出显示你设置的路径对应的侧栏导航
-   *   1、（默认 route.path），此参数是为了满足特殊页面特殊需求，
-   *   2、如：详情页等选中侧栏导航或在模块A下面的页面，想选模块B为导航选中状态
-   */
-  selectLeftMenu?: string;
-  // 所有父元素的path,下标key按照父元素的顺序
-  parentPath?: string[];
+  //  * 左侧菜单选中，如果设置路径，侧栏将突出显示你设置的路径对应的侧栏导航
+  //  *   1、（默认 route.path），此参数是为了满足特殊页面特殊需求，
+  //  *   2、如：详情页等选中侧栏导航或在模块A下面的页面，想选模块B为导航选中状态
+  //  */
+  // selectLeftMenu?: string;
+  // // 所有父元素的path,下标key按照父元素的顺序
+  // parentPath?: string[];
 
-  /**
-   * 设置tab导航存储规则类型
-   *    1、默认不配置按照path(route.path)规则
-   *    2、querypath：path + query (route.path+route.query) 规则
-   */
-  tabNavType?: TabNavType;
-  /**
-   * 设置该字段，则在关闭当前tab页时，作为关闭前的钩子函数
-   * @param close 关闭回调函数
-   */
-  tabNavCloseBefore?: (close: () => void) => void;
+  // /**
+  //  * 设置tab导航存储规则类型
+  //  *    1、默认不配置按照path(route.path)规则
+  //  *    2、querypath：path + query (route.path+route.query) 规则
+  //  */
+  // tabNavType?: TabNavType;
+  // /**
+  //  * 设置该字段，则在关闭当前tab页时，作为关闭前的钩子函数
+  //  * @param close 关闭回调函数
+  //  */
+  // tabNavCloseBefore?: (close: () => void) => void;
 }
 
 export type RouteComponent = React.FC<BrowserRouterProps> | (() => any);

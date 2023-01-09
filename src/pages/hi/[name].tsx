@@ -5,19 +5,18 @@ const HiPage = () => {
 
   return (
     <div>
-      <div i-carbon-pedestrian text-4xl inline-block />
+      {/* <div i-carbon-pedestrian text-4xl inline-block /> */}
       <p>
         {t('page:hi.hi')}
       </p>
-      <p text-sm op50>
+      <p>
         <em>
           { params.name }
         </em>
       </p>
       <div>
         <button
-          className='btn' m-3 text-sm
-          mt-8 onClick={() => navigate(-1)}
+          className='btn' onClick={() => navigate(-1)}
         >
           {t('common:button.back')}
         </button>
